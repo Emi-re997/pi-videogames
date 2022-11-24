@@ -1,0 +1,41 @@
+.containerHome{
+    /* background: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%) fixed; */
+    /* background-image: url('https://i.ibb.co/Qd5KrgP/imageedit-1-6094451759.jpg'); */
+    background: radial-gradient(circle, rgb(111, 65, 0) 0%, rgba(0,0,0,0.9248074229691877) 100%);
+    width: 100%;
+    min-height: 100vh;
+}
+
+.containerCards{
+display: flex;
+flex-wrap: wrap;
+width: 70%;
+gap: 1rem;
+justify-content: center;
+padding: 20px 0;
+
+}
+
+
+
+.cardsAndFilters{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: auto;
+
+}
+
+.holi{
+    display: flex;
+}
+
+@media (max-width: 600px) {
+    .holi{
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+  }

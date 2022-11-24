@@ -1,0 +1,20 @@
+.filters {
+  color: white;
+  width: 20%;
+  font-size: 1.5rem;
+  padding: 0 15px;
+}
+
+.underline{
+  border-bottom: 1px solid white;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.options{
+  width: 100%;
+}
+
+.aligns{
+margin-top: 1em;
+}

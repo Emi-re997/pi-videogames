@@ -1,0 +1,141 @@
+.cardContainer {
+    width: 260px;
+    height: 330px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    place-content: center;
+    place-items: center;
+    overflow: hidden;
+    /* background: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#03bac79e); */
+    /* background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1); */
+    background-color: #583903;
+    box-shadow: 15px 15px 30px #000000,
+             -15px -15px 30px #000000;
+    border-radius: 20px;
+    box-shadow: var(--box_shadow_card);
+}
+
+
+/* From uiverse.io by @alexruix */
+.card {
+    width: 12rem;
+    height: auto;
+    padding: .8em;
+    /* background: #f5f5f5; */
+    /* position: relative; */
+    /* overflow: visible; */
+    display: flex;
+    color: white;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    /* border: 2px solid rgba(255, 53, 53, 0.67); */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+   
+   }
+   
+   .cardImg {
+    background-color: #ffcaa6;
+    height:6.5rem;
+    width: 100%;
+    border-radius: .5rem;
+    transition: .3s ease;
+
+   }
+   
+   .cardInfo {
+    padding-top: 10%;
+    width: 100%;
+    height: 5rem;
+   }
+   
+   
+   .cardFooter {
+    width: 100%;
+    display: flex;
+    /* justify-content: space-between;
+    align-items: center; */
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+
+   }
+   
+   /*Text*/
+   .textTitle {
+    font-weight: 900;
+    font-size: 1.2em;
+    line-height: 1.5;
+   }
+   
+   .textBody {
+    font-size: .9em;
+    padding-bottom: 10px;
+   }
+   
+   /*Button*/
+  
+   
+   /*Hover*/
+   /* .cardImg:hover {
+    transform: translateY(-25%);
+    box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+   } */
+
+.ratybuton{
+    display: flex;
+    gap: 20px;
+
+}
+
+.cardButton {
+    --glow-color: rgb(85, 60, 2);
+    --glow-spread-color: rgba(154, 116, 0, 0.781);
+    --enhanced-glow-color: rgb(85, 60, 2);
+    --btn-color: rgba(154, 116, 0, 0.781);
+    border: .25em solid var(--glow-color);
+    padding: 0.5em 2em;
+    color: var(--glow-color);
+    font-size: 12px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 1em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+    
+   }
+   
+   .cardButton::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(2em);
+    opacity: .7;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+   }
+   
+   .cardButton:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 2em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+   }
+   
+   .cardButton:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+           0 0 2.5em 2em var(--glow-spread-color),
+           inset 0 0 .5em .25em var(--glow-color);
+   }
