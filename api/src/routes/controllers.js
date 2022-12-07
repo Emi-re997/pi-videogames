@@ -28,7 +28,7 @@ const getInfoApi = async () => {
             name: e.name,
             img: e.background_image,
             genres: e.genres?.map(e => e.name).join(', '),
-            released: e.released,
+            reviews_text_count: e.reviews_text_count,
             rating: e.rating,
             platform: e.platforms?.map((e) => e.platform.name).join(', ')
         })

@@ -5,6 +5,7 @@ import {
   getAllGames,
   getAllGenres,
   getAllPlatforms,
+  filterByRewievs
 } from "../../actions";
 import { Link } from "react-router-dom";
 import Card from "../card/Card";
@@ -34,14 +35,16 @@ export default function Home() {
     dispatch(getAllGames());
   }, [dispatch]);
 
-
+  function handleFilterReviwevs(e) {
+    e.preventDefault();
+    dispatch(filterByRewievs(e.target.value));
+  }
 
   return (
     <div className={s.containerHome}>
        <NavBar setCurrentPage={setCurrentPage}/> 
 
-  
-
+    <button  onChange={(e) => handleFilterReviwevs(e)}>Filtrado por reviwecs</button>
     <div className={s.cardsAndFilters}>
    
         <Paginado

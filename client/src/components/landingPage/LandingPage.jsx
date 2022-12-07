@@ -15,7 +15,7 @@ export default function LandingPage() {
           <span className={s.letter}>M</span>
           <span className={s.letter}>E</span>
           <span className={s.invisibleLetter}>' '</span>
-          <h1 className={s.h1}>WIKI GAMES</h1>
+          <h1 className={s.h1}>WIKI GAMES APP</h1>
           <Link to='/home'>
           <button className={s.button}></button>
           </Link>

@@ -1,8 +1,13 @@
+import {
+    GET_ALL_GAMES,
+
+} from "../actions/index"
+
 const inicialState = {
     allGames: [],
     allMyGenres: [],
     games: [],
-    platforms : [],
+    platforms: [],
     gameDetail: []
 }
 
@@ -22,22 +27,30 @@ export default function rootReducer(state = inicialState, action) {
                 allMyGenres: action.payload
             }
 
-        case   'GET_GAME_BY_SEARCH':
+        case `FILTER_BY_REWIEVS`:
+           const game = [...state.allGames]
+            const rewievsFilter = game.filter((g) => g.reviews >= 50)
+            return {
+                ...state,
+                allGames: rewievsFilter,
+            }
+
+        case 'GET_GAME_BY_SEARCH':
 
             let nombre = action.payload === '' ? state.allGames : state.allGames.filter(e => e.name.toLowerCase().includes(action.payload.toLowerCase()))
 
-            return{
+            return {
                 ...state,
                 games: nombre
             }
-            
+
         case 'GET_ALL_PLATFORMS':
-            return{
+            return {
                 ...state,
-                platforms : action.payload
+                platforms: action.payload
             }
         case 'GET_DETAIL':
-            return{
+            return {
                 ...state,
                 gameDetail: action.payload
             }
@@ -81,7 +94,7 @@ export default function rootReducer(state = inicialState, action) {
                     }
                     return 0;
                 });
-                
+
 
             return {
                 ...state,
@@ -90,43 +103,52 @@ export default function rootReducer(state = inicialState, action) {
 
         case 'FILTER_BY_ABC':
             let sorted = action.payload === 'asc' ?
-            state.allGames.sort(( a, b ) => {
-                if(a.name > b.name) {
-                    return 1;
-                }
-                if(a.name < b.name) {
-                    return -1;
-                }
-                return 0;
-            }) :
-            state.allGames.sort(( a, b ) => {
-                if(a.name > b.name) {
-                    return -1;
-                }
-                if(a.name < b.name) {
-                    return 1;
-                }
-                return 0;
-            })
-            return{
+                state.allGames.sort((a, b) => {
+                    if (a.name > b.name) {
+                        return 1;
+                    }
+                    if (a.name < b.name) {
+                        return -1;
+                    }
+                    return 0;
+                }) :
+                state.allGames.sort((a, b) => {
+                    if (a.name > b.name) {
+                        return -1;
+                    }
+                    if (a.name < b.name) {
+                        return 1;
+                    }
+                    return 0;
+                })
+            return {
                 ...state,
-                games : sorted
+                games: sorted
             }
 
         case 'FILTER_CREATED':
             const createdFilter =
-            action.payload === "db"
-              ? state.allGames.filter((e) => e.createDB)
-              : state.allGames.filter((e) => !e.createDB);
-          return {
-            ...state,
-            games: action.payload === "origin" ? state.allGames : createdFilter,
-          };
-          case 'CLEAR':
+                action.payload === "db"
+                    ? state.allGames.filter((e) => e.createDB)
+                    : state.allGames.filter((e) => !e.createDB);
             return {
                 ...state,
-                gameDetail : action.payload
+                games: action.payload === "origin" ? state.allGames : createdFilter,
+            };
+        case 'CLEAR':
+            return {
+                ...state,
+                gameDetail: action.payload
+            };
+        //      case `DELETE_VIDEOGAMES`:
+        //          return {
+        //           ...state,
+        //           };
+        case `FILTER_REWIEV`:
+            return {
+                ...state,
             }
+
         default:
             return state;
     }

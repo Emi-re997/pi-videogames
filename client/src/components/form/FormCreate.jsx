@@ -8,8 +8,9 @@ import {
 } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./formCreate.Module.css";
+import NavBar from "../navbar/NavBar";
 
-export default function () {
+export default function Form () {
   const dispatch = useDispatch();
   const history = useHistory();
   const genres = useSelector((state) => state.allMyGenres);
@@ -173,11 +174,7 @@ export default function () {
 
         <div className={s.firstContainerForm}>
       
-        <Link to="/home">
-          <div className={s.buttonContainer}><button className={s.buttonForm}>BACK HOME</button></div>
-          
-        </Link>
-
+        
         <div className={s.containerForm}>
 
         <h1 className={s.titulo}>Crea tu videojuego</h1>
@@ -303,6 +300,11 @@ export default function () {
             </div>
           )}
         </form>
+        <Link to="/home">
+          <div className={s.buttonContainer}><button className={s.buttonForm}>BACK HOME</button></div>
+          
+        </Link>
+
         </div>
         </div>
       </div>

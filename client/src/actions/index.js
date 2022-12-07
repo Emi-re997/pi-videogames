@@ -1,4 +1,16 @@
 import axios from 'axios';
+export const FILTER_BY_REWIEVS = `FILTER_BY_REWIEVS`
+export const GET_ALL_GAMES = `GET_ALL_GAMES`
+export const GET_ALL_GENRES = "GET_ALL_GENRES"
+export const GET_GAME_BY_SEARCH = "GET_GAME_BY_SEARCH"
+export const FILTER_BY_GENRE = "FILTER_BY_GENRE"
+export const FILTER_BY_RATING = "FILTER_BY_RATING"
+export const FILTER_BY_ABC = "FILTER_BY_ABC"
+export const FILTER_CREATED = "FILTER_CREATED"
+export const GET_ALL_PLATFORMS = "GET_ALL_PLATFORMS"
+export const GET_DETAIL = "GET_DETAIL"
+export const CLEAR = "CLEAR"
+
 
 const { API_URL } = process.env;
 
@@ -11,6 +23,14 @@ export function getAllGames() {
         })
     }
 }
+
+export function filterByRewievs() {
+    return async function (dispatch) {     
+       dispatch({
+            type: `FILTER_BY_REWIEVS`,   
+        })
+    }}
+
 
 export function getAllGenres() {
     return async function (dispatch) {
@@ -74,6 +94,7 @@ export function filterCreated(payload) {
         payload
     }
 }
+ 
 
 export function postGame(payload) {
     return async function () {

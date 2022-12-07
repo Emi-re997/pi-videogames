@@ -11,9 +11,9 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-//------------------------------ Functions --------------------------------------------------------\\
+//------------------------------ Controllers --------------------------------------------------------\\
 
-//Function to get videogames from the API
+//Funcion para traer videogames de la Api
 
 const getApiInfo = async () => {
     const oneHundredGames = [];
@@ -28,7 +28,8 @@ const getApiInfo = async () => {
                 genres: e.genres.map(e => e.name).join(', '),
                 released: e.released,
                 rating: e.rating,
-                platform: e.platforms.map((e) => e.platform.name).join(', ')
+                platform: e.platforms.map((e) => e.platform.name).join(', '),
+                reviews : e.reviews_text_count
             })
         })
     }
@@ -36,7 +37,7 @@ const getApiInfo = async () => {
     return oneHundredGames;
 }
 
-//Funtion to get videogames from the database
+//Funcion para traer videogames de la DB
 const getInfoDB = async () => {
     const dbData = await Videogame.findAll({
       include: {
@@ -50,7 +51,7 @@ const getInfoDB = async () => {
     return dbData;
   };
 
-// Function to get videosgames from api and db
+// Funcion para concatenar la informacion de la DB y la API
 const getAllVideogames = async () =>{
     const apiInfo = await getApiInfo();
     const dbInfo = await getInfoDB();
@@ -58,11 +59,11 @@ const getAllVideogames = async () =>{
     return infoTotal;
 }
 
-//------------------------------ Functions end --------------------------------------------------------\\
+//------------------------------ Controllers --------------------------------------------------------\\
 
 //------------------------------ ROUTES --------------------------------------------------------\\
 
-//ROUTE TO GET ALL VIDEOGAMES
+//ROUTE GET DE VIDEOGAES, API +DB
 router.get('/videogames', async (req,res) =>{
 
     const name = req.query.name // ej: "/videogames?gta"
@@ -79,7 +80,7 @@ router.get('/videogames', async (req,res) =>{
     }
 })
 
-//Route to get genders and save in my db
+//ROUTE GET 
 router.get('/genres', async (req,res) => {
     const genresApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
     const genres = await genresApi.data.results.map(e => e.name)
