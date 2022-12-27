@@ -29,7 +29,9 @@ const getApiInfo = async () => {
                 released: e.released,
                 rating: e.rating,
                 platform: e.platforms.map((e) => e.platform.name).join(', '),
-                reviews : e.reviews_text_count
+                reviews : e.reviews_text_count,
+                playtime : e.playtime,
+                update : e.updated,
             })
         })
     }
@@ -184,6 +186,21 @@ if(!id.includes('-')){
     
 
 })
+
+router.delete("/delete/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+      const gameDelete = await Videogame.findByPk(id);
+      if (!gameDelete) {
+        res.status(400).send("No existe el Videogame que deseas eliminar");
+      } else {
+        gameDelete.destroy();
+        return res.status(200).send("Videogame eliminado correctamente");
+      }
+    } catch (error) {
+      res.status(400).json({ error: error.message }, "Entré al error de delete");
+    }
+  });
 
 //------------------------------ ROUTES END --------------------------------------------------------\\
 

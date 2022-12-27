@@ -10,7 +10,7 @@ export const FILTER_CREATED = "FILTER_CREATED"
 export const GET_ALL_PLATFORMS = "GET_ALL_PLATFORMS"
 export const GET_DETAIL = "GET_DETAIL"
 export const CLEAR = "CLEAR"
-
+export const DELETE_VIDEOGAME = "DELETE_VIDEOGAME"
 
 const { API_URL } = process.env;
 
@@ -24,12 +24,7 @@ export function getAllGames() {
     }
 }
 
-export function filterByRewievs() {
-    return async function (dispatch) {     
-       dispatch({
-            type: `FILTER_BY_REWIEVS`,   
-        })
-    }}
+
 
 
 export function getAllGenres() {
@@ -80,6 +75,23 @@ export function filterByRating(payload) {
         payload
     }
 }
+
+export function filterByRewievs(payload) {
+    return ({
+            type: `FILTER_BY_REWIEVS`,   
+            payload
+        })
+    }
+
+    
+        
+    
+export function filterByPlayTime(payload) {
+    return ({
+            type: `FILTER_BY_PLAY_TIME`,   
+            payload
+        })
+    }
 
 export function filterByAbc(payload) {
     return {
@@ -135,3 +147,4 @@ export function clear(){
         payload : []
     }
 }
+

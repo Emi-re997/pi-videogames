@@ -1,5 +1,6 @@
 import {
     GET_ALL_GAMES,
+    
 
 } from "../actions/index"
 
@@ -14,7 +15,7 @@ const inicialState = {
 
 export default function rootReducer(state = inicialState, action) {
     switch (action.type) {
-        case 'GET_ALL_GAMES':
+        case GET_ALL_GAMES:
             return {
                 ...state,
                 allGames: action.payload,
@@ -27,14 +28,7 @@ export default function rootReducer(state = inicialState, action) {
                 allMyGenres: action.payload
             }
 
-        case `FILTER_BY_REWIEVS`:
-           const game = [...state.allGames]
-            const rewievsFilter = game.filter((g) => g.reviews >= 50)
-            return {
-                ...state,
-                allGames: rewievsFilter,
-            }
-
+      
         case 'GET_GAME_BY_SEARCH':
 
             let nombre = action.payload === '' ? state.allGames : state.allGames.filter(e => e.name.toLowerCase().includes(action.payload.toLowerCase()))
@@ -94,12 +88,43 @@ export default function rootReducer(state = inicialState, action) {
                     }
                     return 0;
                 });
-
-
+                
             return {
                 ...state,
                 games: sorted2
             }
+
+
+            case `FILTER_BY_REWIEVS`:
+            
+                state.games = state.allGames.filter((g) => g.reviews >= 50 )
+                if (action.payload === "all") state.games = state.allGames
+                if(action.payload === "filter"){
+                if (state.games.length === 0) {
+                    alert("No hay resultados")
+                    state.games = state.allGames
+                }}
+                return {
+                    ...state,
+                    games: state.games
+                }
+
+         case "FILTER_BY_PLAY_TIME":
+
+         state.games = state.allGames.filter((g) => g.playtime >= 20 )
+         if (action.payload === "all") state.games = state.allGames
+         if(action.payload === "playtime"){
+         if (state.games.length === 0) {
+             alert("No hay resultados")
+             state.games = state.allGames
+         }}
+         return {
+             ...state,
+             games: state.games
+         }
+
+        
+    
 
         case 'FILTER_BY_ABC':
             let sorted = action.payload === 'asc' ?
@@ -140,14 +165,9 @@ export default function rootReducer(state = inicialState, action) {
                 ...state,
                 gameDetail: action.payload
             };
-        //      case `DELETE_VIDEOGAMES`:
-        //          return {
-        //           ...state,
-        //           };
-        case `FILTER_REWIEV`:
-            return {
-                ...state,
-            }
+
+            
+       
 
         default:
             return state;

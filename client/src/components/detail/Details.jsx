@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link ,useHistory,useParams} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail, clear } from "../../actions/index";
+import { getDetail, clear , deleteVideogame ,getAllGames } from "../../actions/index";
 import s from "./Details.Module.css";
 import Loader from "../loader/Loader";
 import Footer from "../footer/Footer"
@@ -17,6 +17,14 @@ export default function Details(props) {
   }, []);
 
   const myGame = useSelector((state) => state.gameDetail);
+  const history = useHistory();
+  
+ /* const handleDelete = () => {
+    dispatch(deleteVideogame(myGame.id));
+   alert("Videogame eliminado");
+    history.push("/home");
+    dispatch(getAllGames());
+  } */
 
   return (
     <div className={s.containerPadre}>
@@ -39,6 +47,10 @@ export default function Details(props) {
                 <span>{myGame[0].released}</span>
                </div>
               </div>
+
+               
+         
+                  
         </div>
         <div className="contanerFooter">
         <div className={s.containerButton}>

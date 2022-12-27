@@ -123,17 +123,17 @@ export default function Form () {
     );
   }
 
-  function handleDeletePlatforms(el) {
+  function handleDeletePlatforms(e) {
     setInput({
       ...input,
-      platforms: input.platforms.filter((param) => param !== el),
+      platforms: input.platforms.filter((param) => param === e),
     });
   }
 
-  function handleDeleteGenres(el) {
+  function handleDeleteGenres(e) {
     setInput({
       ...input,
-      genres: input.genres.filter((param) => param !== el),
+      genres: input.genres.filter((param) => param === e),
     });
   }
 
@@ -246,7 +246,7 @@ export default function Form () {
               return (
                 <>
                   <div>{e}</div>
-                  <button onClick={() => handleDeleteGenres(e)}>X</button>
+                  <button onClick={(e) => handleDeleteGenres(e)}>X</button>
                 </>
               );
             })}{" "}
@@ -272,7 +272,7 @@ export default function Form () {
               return (
                 <>
                   <div>{e}</div>
-                  <button onClick={() => handleDeletePlatforms(e)}>X</button>
+                  <button onClick={(e) => handleDeletePlatforms(e)}>X</button>
                 </>
               );
             })}

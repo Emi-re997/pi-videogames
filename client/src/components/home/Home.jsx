@@ -5,7 +5,8 @@ import {
   getAllGames,
   getAllGenres,
   getAllPlatforms,
-  filterByRewievs
+  filterByRewievs,
+  filterByPlayTime,
 } from "../../actions";
 import { Link } from "react-router-dom";
 import Card from "../card/Card";
@@ -38,15 +39,34 @@ export default function Home() {
   function handleFilterReviwevs(e) {
     e.preventDefault();
     dispatch(filterByRewievs(e.target.value));
+    setCurrentPage(1);
+  }
+ 
+
+  function handleFilterPlayTime(e) {
+    e.preventDefault();
+    dispatch(filterByPlayTime(e.target.value));
+    setCurrentPage(1);
   }
 
   return (
     <div className={s.containerHome}>
        <NavBar setCurrentPage={setCurrentPage}/> 
 
-    <button  onChange={(e) => handleFilterReviwevs(e)}>Filtrado por reviwecs</button>
+ 
     <div className={s.cardsAndFilters}>
-   
+
+
+    <select className={s.options} onChange={(e) => handleFilterReviwevs(e)}>
+          <option value = "all">All</option>
+          <option value = "filter">Filtro +50 Reviews</option>
+        </select>
+
+      <select onChange={(e)=> handleFilterPlayTime(e)}>
+        <option value = "all">All</option>
+        <option value = "playtime">Juegos +20 playtime</option>
+      </select>
+ 
         <Paginado
           gamesPerPage={gamesPerPage}
           allVideoGames={allGames.length}
@@ -70,6 +90,7 @@ export default function Home() {
                   rating={e.rating}
                   key={e.id}
                   genres={e.genres}
+                  reviews={e.reviews}
                 />
               </Link>
             );
